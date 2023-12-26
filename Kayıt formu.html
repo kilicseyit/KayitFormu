@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kayıt Formu</title>
+</head>
+<body>
+    <h2>Kayıt Formu</h2>
+    <form>
+        <label>Adınız:</label>
+        	<input type="text" placeholder="Lütfen adınızı giriniz " required><br>
+        <label>Soyisim:</label>
+        	<input type="text" placeholder="Lütfen soy adınızı giriniz " required><br>
+	<label>Doğum tarihiniz: </label>
+		<input type="date"><br>
+	<label>Cinsiyetiniz:</label> 
+		<input type="radio" name="cinsiyet">Erkek <input type="radio" name="cinsiyet">Kadın<br>	
+	<label>Yaşınız:</label>
+        	<input type=yas" placeholder="Lütfen yaşınızı giriniz "required><br>
+	<label>Email   :</label>
+        	<input type="email" placeholder="Lütfen mailinizi giriniz "required><br>
+	    <div id="educationSection">
+            	<label>Eğitim Durumu:</label>
+            		<select>
+                		<option>ilk okul</option>
+                		<option>orta okul</option>
+               			<option>lise</option>
+                		<option>üniversite</option>
+            		</select>
+        	</div>
+	<input type="submit" value="Kayıt Ol">
+	<input type="reset" value="Temizle">
+
+    </form>
+	<button onclick="addNewEducationSelect()">Yeni Form Ekle</button>
+    	<button onclick="deleteLastEducationSelect()">Formu Sil</button>
+
+    <script>
+
+    function addNewEducationSelect() {
+        var educationSection = document.getElementById("educationSection");
+        var newLabel = document.createElement("label");
+        newLabel.textContent = "Eğitim Durumu:";
+        var newSelect = document.createElement("select");
+        newSelect.innerHTML = `
+            <option>ilk okul</option>
+            <option>orta okul</option>
+            <option>lise</option>
+            <option>üniversite</option>
+        `;
+        educationSection.appendChild(document.createElement("br"));
+        educationSection.appendChild(newLabel);
+        educationSection.appendChild(newSelect);
+    }
+
+    function deleteLastEducationSelect() {
+        var educationSection = document.getElementById("educationSection");
+        var selects = educationSection.getElementsByTagName("select");
+        if (selects.length > 1) {
+            var lastSelect = selects[selects.length - 1];
+            var lastBreak = educationSection.getElementsByTagName("br")[selects.length];
+            var lastLabel = educationSection.getElementsByTagName("label")[selects.length - 1];
+            educationSection.removeChild(lastSelect);
+            educationSection.removeChild(lastBreak);
+            educationSection.removeChild(lastLabel);
+        }
+    }
+</script>
+
+</body>
+</html>
